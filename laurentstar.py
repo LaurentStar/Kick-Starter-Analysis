@@ -13,7 +13,7 @@ class Cleaner:
 										 'Food', 'Games', 'Journalism', 'Music', 'Photography', 'Technology', 'Theater', 
 										 'Publishing']
 		
-	def data_swap(self, row):
+	def shift_data_left(self, row):
 		"""
 		This function checks if there are signs of right shifted data. If right shifted data is detected, 
 		the data is shifted to the left to be corrected. If the data was not right shifted no action will be taken.
