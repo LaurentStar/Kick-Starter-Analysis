@@ -14,7 +14,7 @@ class ColorFormatting:
    UNDERLINE = '\033[4m'
    END = '\033[0m'
 
-
+   
 class Cleaner:
 					  
 	def __init__(self):
