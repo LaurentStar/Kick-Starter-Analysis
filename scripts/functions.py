@@ -20,10 +20,23 @@ def mean_encoding(df, cols, target):
 
 	return df
 	
+def proportion_data_formatting(data):
+    statistic = {}
+    for i in data:
+        for index, class_ in enumerate(i[0]):
+            try:
+                statistic[class_].append(i[1][index])
+            except:
+                statistic[class_] = [i[1][index]]
+
+    for i in statistic:
+        statistic[i] = np.array(statistic[i])
+    return statistic
 	
 def ci_and_point_estimate(data_dict, name):
     """
-    This function calculate the confidence_interval of a bootstrap sample. 
+    This function calculate the confidence_interval of a bootstrap sample. It is defaulted to a 95% confidence_interval. 
+	Along with the confidence_interval the average and standard_error is returned in a list.
 
     Parameters
     ----------
@@ -45,6 +58,6 @@ def ci_and_point_estimate(data_dict, name):
         margin_of_error = z_critical * standard_error/np.sqrt(i[1].size)
         confidence_interval = (sample_mean-margin_of_error, sample_mean+margin_of_error)
 
-        statistic[i[0]] =[confidence_interval, sample_mean]
+        statistic[i[0]] =[confidence_interval, sample_mean, standard_error]
         
     return statistic
